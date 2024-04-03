@@ -30,6 +30,7 @@ class Config {
     this.adaptiveIconMonochrome,
     this.minSdkAndroid = constants.androidDefaultAndroidMinSDK,
     this.removeAlphaIOS = false,
+    this.flavorCatalogNameTemplateIOS,
     this.backgroundColorIOS = '#ffffff',
     this.webConfig,
     this.windowsConfig,
@@ -136,6 +137,11 @@ class Config {
   /// IOS remove_alpha_ios
   @JsonKey(name: 'remove_alpha_ios')
   final bool removeAlphaIOS;
+
+  /// IOS catalog name for your flavor. default is 'AppIcon-<flavor>'.
+  /// '{flavor}' will be replaced with flavor.
+  @JsonKey(name: 'flavor_catalog_name_template_ios')
+  final String? flavorCatalogNameTemplateIOS;
 
   /// IOS background_color_ios
   @JsonKey(name: 'background_color_ios')

@@ -76,8 +76,9 @@ void createIcons(Config config, String? flavor) {
   String iconName;
   final dynamic iosConfig = config.ios;
   if (flavor != null) {
-    final String catalogName = 'AppIcon-$flavor';
-    printStatus('Building iOS launcher icon for $flavor');
+    final String catalogName = _getCatalogName(config, flavor);
+    printStatus(
+        'Building iOS launcher icon for $flavor using name $catalogName');
     for (IosIconTemplate template in iosIcons) {
       saveNewIcons(template, image, catalogName);
     }
@@ -427,4 +428,14 @@ Color _alphaBlend(Color fg, ColorUint8 bg) {
       0xff,
     );
   }
+}
+
+String _getCatalogName(Config config, String flavor) {
+  final template = config.flavorCatalogNameTemplateIOS;
+  final defaultName = 'AppIcon-$flavor';
+  if (template == null || template.isEmpty) {
+    return defaultName;
+  }
+  const slot = '{flavor}';
+  return template.replaceAll(slot, flavor);
 }

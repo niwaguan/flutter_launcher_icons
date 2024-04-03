@@ -27,6 +27,8 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
               (v) => v as int? ?? constants.androidDefaultAndroidMinSDK),
           removeAlphaIOS:
               $checkedConvert('remove_alpha_ios', (v) => v as bool? ?? false),
+          flavorCatalogNameTemplateIOS: $checkedConvert(
+              'flavor_catalog_name_template_ios', (v) => v as String?),
           backgroundColorIOS: $checkedConvert(
               'background_color_ios', (v) => v as String? ?? '#ffffff'),
           webConfig: $checkedConvert(
@@ -47,6 +49,7 @@ Config _$ConfigFromJson(Map json) => $checkedCreate(
         'adaptiveIconMonochrome': 'adaptive_icon_monochrome',
         'minSdkAndroid': 'min_sdk_android',
         'removeAlphaIOS': 'remove_alpha_ios',
+        'flavorCatalogNameTemplateIOS': 'flavor_catalog_name_template_ios',
         'backgroundColorIOS': 'background_color_ios',
         'webConfig': 'web',
         'windowsConfig': 'windows',
@@ -65,6 +68,7 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'adaptive_icon_monochrome': instance.adaptiveIconMonochrome,
       'min_sdk_android': instance.minSdkAndroid,
       'remove_alpha_ios': instance.removeAlphaIOS,
+      'flavor_catalog_name_template_ios': instance.flavorCatalogNameTemplateIOS,
       'background_color_ios': instance.backgroundColorIOS,
       'web': instance.webConfig,
       'windows': instance.windowsConfig,
